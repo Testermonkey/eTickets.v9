@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace eTickets.Models
 {
     public class Cinema
     {
-        private List<Movie> movies = new List<Movie>();
 
         [Key]
         public int Id { get; set; }
@@ -13,6 +16,6 @@ namespace eTickets.Models
         public string Description { get; set; } = string.Empty;
 
         //Relationships
-        public List<Movie> Movies { get => movies; set => movies = value; }
+        public List<Movie>? Movies {  get; set; }
     }
 }

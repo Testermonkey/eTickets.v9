@@ -4,7 +4,7 @@ namespace eTickets.Models
 {
     public class Producer
     {
-        private List<Movie> movies;
+
 
         public int Id { get; set; }
         public string ProfilePictureURL { get; set; } = string.Empty;
@@ -12,7 +12,7 @@ namespace eTickets.Models
         public string Bio { get; set; } = string.Empty;
 
         //Relationships
-        public List<Movie> Movies { get => movies; set => movies = value; }
+        public List<Movie>? Movies {  get; set; }
 
 
     }

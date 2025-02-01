@@ -45,6 +45,8 @@ namespace eTickets
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
+            AppDbInitializer.Seed(app);
+
             app.Run();
         }
     }

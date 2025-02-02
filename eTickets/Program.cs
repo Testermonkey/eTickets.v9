@@ -1,4 +1,5 @@
 using eTickets.Data;
+using eTickets.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,6 +23,8 @@ namespace eTickets
             // Add services to the container.
             
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+            builder.Services.AddScoped<IActorsService, ActorsService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

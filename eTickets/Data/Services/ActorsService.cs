@@ -1,5 +1,4 @@
 ﻿using eTickets.Models;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,6 +28,12 @@ namespace eTickets.Data.Services
         public async Task<IEnumerable<Actor>> GetAll()
         {
             var result = await _context.Actors.ToListAsync();
+            return View(result);
+        }
+
+        private IEnumerable<Actor> View(List<Actor> result)
+        {
+            // Assuming you want to return the list as is
             return result;
         }
 

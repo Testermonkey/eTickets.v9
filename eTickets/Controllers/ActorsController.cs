@@ -18,6 +18,7 @@ namespace eTickets.Controllers
             _service = service;
         }
 
+        //Get: Actors
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
@@ -75,6 +76,32 @@ namespace eTickets.Controllers
             }
 
             await _service.UpdateAsync(id, actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Actors/Delete/5
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+            return View(actorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
